@@ -28,7 +28,7 @@ public class OrgAnnotatorTest {
 				AnalysisEngineFactory.createAnalysisEngineFromPath("OrganisationAE.xml");
 
 		JCas jCas =
-				AnalysisEngineFactory.process(engine, "Senior Vice President at Monaco Telecom Monaco Telecommunications Current Previous 1. Monaco Telecom,2. Anevia,");
+				AnalysisEngineFactory.process(engine, "Monaco Telecommunications Current Previous 1. Monaco Telecom, 2. Anevia, 3. Niji SA 1. DigitalWalli,2. eServGlobal,3. Highdeal SA");
 		
 		
 		

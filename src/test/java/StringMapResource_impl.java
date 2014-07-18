@@ -33,7 +33,6 @@ InputStream inStr = null;
 				int tabPos =line.indexOf('\t');
 				String Key= line.substring(0,tabPos);
 				String val=line.substring(tabPos+1);
-				//System.out.println("le composant de hashmap est "+Key);
 				mMap.put(Key, val);
 				
 				

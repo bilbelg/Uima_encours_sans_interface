@@ -51,7 +51,7 @@ static Element racine;
 	      if (!(token.equals(" ")||token.equals(","))){ 
 	     PresdePres=tokPres;
 	     tokPres=token;
-	     //System.out.println("tok avant prec est "+PresdePres);
+	    
 	     
 	      }
 	      
@@ -59,9 +59,6 @@ static Element racine;
 	      
 	      if (!(token.equals(" ")||token.equals(","))){
 	 
-	          //System.out.println("tok  prec est "+tokPres);
-	         
-	         // System.out.println("tok courant  est "+token);
 	         
 	          if((token.matches("^[A-Z].*"))){
 	         
@@ -113,7 +110,7 @@ static Element racine;
 	      
 	    }
 	  }
-	
+	/*
 		public static void afficheAll(){
 		
 	    HashMap<String,Integer> organization=new HashMap<String, Integer>();
@@ -134,6 +131,6 @@ static Element racine;
 		for (String organisation : organization.keySet()){
 			System.out.println("organisation "+organisation);
 		}
-	}
+	}*/
 	}
 
