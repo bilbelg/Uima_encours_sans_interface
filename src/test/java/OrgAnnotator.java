@@ -1,11 +1,17 @@
 
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 import java.util.StringTokenizer;
-
 
 import org.apache.uima.analysis_component.JCasAnnotator_ImplBase;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.resource.ResourceAccessException;
+import org.jdom.Element;
+
+
+
 
 
 
@@ -13,7 +19,8 @@ public class OrgAnnotator extends JCasAnnotator_ImplBase {
 	
 private StringMapResource mMap;
 
-
+static org.jdom.Document document;
+static Element racine;
 	
 	public void process(JCas aJCas) throws AnalysisEngineProcessException {
 		
@@ -60,11 +67,11 @@ private StringMapResource mMap;
 	         
 	         if((tokPres.matches("^[A-Z].*"))){
 	         doubleMot=tokPres+" "+token;
-	         System.out.println(" mot comp "+doubleMot);
+	         
 	         
 	         	if((PresdePres.matches("^[A-Z].*"))){
 	         	triMot=PresdePres+" "+doubleMot;
-	         	System.out.println(" tri mot comp "+triMot);
+	         	
 	         	}
 	         }
 	          
@@ -87,16 +94,14 @@ private StringMapResource mMap;
 	      
 	      if ((expandedForm2 != null)) {
 	          // create annotation
-	       System.out.println("existe dans le dico "+expandedForm2);
-	       System.out.println("longeur de mot composé "+doubleMot.length());
+	      
 	       Org annot2 = new Org(aJCas, pos2, pos2 + doubleMot.length(), doubleMot);
 	          annot2.addToIndexes();
 	        }
 	      
 	      if ((expandedForm3 != null)) {
 	          // create annotation
-	       System.out.println("existe dans le dico "+expandedForm3);
-	       System.out.println("longeur de mot composé "+triMot.length());
+	      
 	       Org annot3 = new Org(aJCas, pos2, pos2 + triMot.length(), triMot);
 	          annot3.addToIndexes();
 	        }
@@ -108,5 +113,27 @@ private StringMapResource mMap;
 	      
 	    }
 	  }
+	
+		public static void afficheAll(){
+		
+	    HashMap<String,Integer> organization=new HashMap<String, Integer>();
+		List listeOrg=racine.getChildren(); 
+		//crée un Iterator pour parcourir la liste
+		
+		System.out.println("\t ya rabiiiiiiiiii \t");
+		Iterator i=listeOrg.iterator();
+		while(i.hasNext()){
+			
+			Element courant =(Element) i.next();
+			if(courant.getAttributeValue("expandedForm") !=null){
+			//System.out.println(courant.getAttributeValue("expandedForm"));
+			organization.put(courant.getAttributeValue("expandedForm"),1);
+			}
+		}
+		
+		for (String organisation : organization.keySet()){
+			System.out.println("organisation "+organisation);
+		}
+	}
 	}
 
