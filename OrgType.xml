@@ -6,7 +6,7 @@
     <vendor/>
   <types>
     <typeDescription>
-      <name>organisation</name>
+      <name>Org</name>
       <description/>
       <supertypeName>uima.tcas.Annotation</supertypeName>
       <features>
